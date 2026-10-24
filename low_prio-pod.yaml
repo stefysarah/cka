@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: low-prio-pod
+  name: low-prio-pod
+spec:
+  containers:
+  - image: nginx
+    name: low-prio-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  priorityClassName: low-priority
+status: {}
