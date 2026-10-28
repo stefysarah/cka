@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: node01
+  name: node01
+spec:
+  containers:
+  - image: nginx
+    name: node01
+  tolerations:
+  - key: app
+    operator: Equal
+    value: dev
+    effect: NoSchedule
