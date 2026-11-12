@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: color
+  name: env-color
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: color
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: color
+    spec:
+      containers:
+      - image: 2nxt/my-env-color:v1
+        name: env-color
+        ports:
+          - containerPort: 8080
+            #name: env-svc
+        envFrom:
+          - configMapRef:
+              name: env-configmap
+          - secretRef:
+              name: test 
+#     env:
+#       - name: APP_COLOR
+#         value: "blue"            
+        resources: {}
+status: {}

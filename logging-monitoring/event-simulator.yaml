@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: event-simulator
+  name: event-simulator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-simulator
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: event-simulator
+    spec:
+      containers:
+      - image: nginx 
+        name: nginx 
+      - image: 2nxt/event-simulator
+        name: event-simulator      
+      - image: busybox
+        name: busybox
+        command: ['sh', '-c', 'echo I am in Busybox container && sleep 3600']
+        resources: {}
+status: {}

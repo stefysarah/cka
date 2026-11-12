@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: color
+  name: env-color
+spec:
+  ports:
+    - name: env-svc 
+      port: 8080
+      nodePort: 32570
+      protocol: TCP
+  selector:
+    app: color
+  type: NodePort
+status:
+  loadBalancer: {}
